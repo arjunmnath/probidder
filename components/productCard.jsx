@@ -24,10 +24,10 @@ const ProductCard = (props) => {
     });
 
     return <>
-        <div className={`group card h-max border border-1 broder-[#D9D9D9] rounded-lg overflow-hidden`}>
+        <div className={`group card h-max sm:w-[80vw] md:w-[24vw] lg:w[24vw] flex-shrink-0 border border-1 broder-[#D9D9D9] rounded-lg overflow-hidden`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <div className={`relative`}>
-                <div className={`rounded-lg m-1 overflow-hidden transition-transform duration-500 ease-in-out `}>
+                <div className={`rounded-lg  m-1 overflow-hidden transition-transform duration-500 ease-in-out `}>
                     <Link href={`/products/${props.id}`} passHref>
                     <img className={`transition-transform duration-[600ms] ease-in-out transform hover:scale-125 h-auto `} src={props.image} alt=""/>
                     </Link>

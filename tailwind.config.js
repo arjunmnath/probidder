@@ -20,6 +20,26 @@ module.exports = {
       animation: {
         blink: 'blink 1s steps(1, start) infinite',
       },
+      fontFamily: {
+        barrio: ['Barrio', 'system-ui'],
+        balsamiq: ["Balsamiq Sans", 'sans-serif'],
+        abel: ["Abel", 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+      fontWeight: {
+        regular: 400,
+      },
+      fontStyle: {
+        normal: 'normal',
+      },
+      backgroundImage: {
+        'sprinkle-shade': "url('/sprinkle.png')",
+        'porcelain': "url('/category-img1.jpg')",
+        'clock': "url('/category-img2.jpg')",
+        'jewelery': "url('/category-img3.jpg')",
+        'manuscript': "url('/category-img4.jpg')",
+        'ceramic': "url('/category-img5.jpg')",
+      }
     },
   },
   plugins: [],
