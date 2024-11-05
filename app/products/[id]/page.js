@@ -1,5 +1,4 @@
 'use client'
-
 import {useEffect, useState} from "react";
 import SlidingDrawer from "@/components/sliding-drawer";
 import RemainingTime from "@/components/timer2";

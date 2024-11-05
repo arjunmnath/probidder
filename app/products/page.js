@@ -3,6 +3,7 @@ import {useSearchParams} from 'next/navigation'
 import {useEffect, useState} from "react";
 import Tag from "@/components/tag";
 import ProductCard from "@/components/productCard";
+import { Suspense } from 'react';
 
 const ProductsPage = () => {
     const params = useSearchParams()
@@ -94,4 +95,12 @@ const ProductsPage = () => {
     </>
 }
 
-export default ProductsPage
+
+const SuspenseWrapper = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <ProductsPage/>
+    </Suspense>
+);
+
+
+export default SuspenseWrapper;
