@@ -1,4 +1,5 @@
 import RemainingTime from "@/components/timer2";
+import Link from "next/link";
 const TrendingCard = (props) => {
     const Rupee = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -20,9 +21,9 @@ const TrendingCard = (props) => {
                 </div>
 
                 <div className={``}>
-                    <a className={`bg-[#D8762D] text-white rounded-md py-3 px-6 font-bold`}>
+                    <Link href={`/products/${props.id}`} className={`bg-[#D8762D] text-white rounded-md py-3 px-6 font-bold`}>
                       Bid Now
-                    </a>
+                    </Link>
                 </div>
 
             </div>

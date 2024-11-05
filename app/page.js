@@ -11,7 +11,7 @@ import CategoryCard from "@/components/category-card";
 export default function Home() {
     const data = {
         image: 'https://demo.egenslab.com/html/probid/preview/assets/img/home3/auction-img1.jpg',
-        status: 'live',
+        status: 'upcoming',
         title: `Neo-classical marble busting rustic farmhouse`,
         bidPrice: '5949',
         id: '390242',
@@ -78,6 +78,7 @@ export default function Home() {
                 image: '/category-img5.jpg'
             },
         ])
+        localStorage.setItem('userId', '1');
     },[])
     return <>
         <div className={``}>
@@ -129,13 +130,10 @@ export default function Home() {
             </div>
 
             <div className={`trending grid grid-cols-1 md:lg:grid-cols-2 gap-6`}>
-
                 {
                     trending.map((trending, index) => <TrendingCard key={index} {...trending} index={index}/>)
                 }
             </div>
-
-
             <div className={`live-auctions my-4`}>
                 <Tag text={`Bidding Our`} bg={`bg-[#FAF2EB]`}/>
                 <h2 className={`p-2 text-black font-extrabold text-3xl`}>Live <span

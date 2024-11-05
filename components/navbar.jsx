@@ -1,4 +1,14 @@
+'use client'
+import Link from "next/link";
+import {useRouter} from "next/navigation";
+
 const Navbar = () => {
+    const router = useRouter();
+    const handleOnSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        router.push(`/products?q=${event.target.query.value}`);
+    }
     return <>
         <div className={`flex flex-row gap-4 p-2 justify-evenlyw-1/5 h-16 shadow-md`}>
             <div className={`logo w-1/5`}>
@@ -13,35 +23,43 @@ const Navbar = () => {
 
             <div className={`flex flex-row gap-12 w-2/5`}>
                 <div className={`flex flex-row h-full items-center`}>
-                    <span className={`font-extrabold font-mono text-xl`}>Home</span>
+                    <Link href={'/'}>
+                        <span className={`font-extrabold font-mono text-xl`}>Home</span>
+                    </Link>
                 </div>
                 <div className={`flex flex-row h-full items-center`}>
-                    <span className={`font-extrabold font-mono text-xl`}>Auctions</span>
+                    <Link href={'/products'}>
+                        <span className={`font-extrabold font-mono text-xl`}>Auctions</span>
+                    </Link>
                 </div>
                 <div className={`flex flex-row h-full items-center`}>
-                    <span className={`font-extrabold font-mono text-xl`}>Orders</span>
+                    <Link href={'/orders'}>
+                        <span className={`font-extrabold font-mono text-xl`}>Orders</span>
+                    </Link>
                 </div>
             </div>
 
-            <div className={`flex flex-row py-1 w-2/5`}>
-                <input
-                    className={`placeholder:px-4  h-full w-full border border-1 rounded-bl-md rounded-tl-md border-gray-300 active:border-gray-300 active:outline-1 active:outline-gray-400`}
-                    placeholder={`Search`}/>
-                <button className={`bg-[#D8762D] h-full p-2 rounded-tr-md rounded-br-md `}>
-                    <svg className={`fill-white h-full`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                         fill="none">
-                        <g clipPath="url(#clip0_10_450)">
-                            <path
-                                d="M23.7068 22.2937L17.7378 16.3247C19.3644 14.3353 20.1642 11.7968 19.9716 9.23426C19.7791 6.67173 18.609 4.28123 16.7034 2.55722C14.7977 0.833208 12.3024 -0.0924103 9.73342 -0.0281784C7.16447 0.0360534 4.71849 1.08522 2.9014 2.90231C1.08431 4.7194 0.0351379 7.16539 -0.029094 9.73434C-0.0933258 12.3033 0.832293 14.7987 2.5563 16.7043C4.28031 18.6099 6.67081 19.78 9.23334 19.9725C11.7959 20.1651 14.3344 19.3653 16.3238 17.7387L22.2928 23.7077C22.4814 23.8899 22.734 23.9907 22.9962 23.9884C23.2584 23.9861 23.5092 23.8809 23.6946 23.6955C23.88 23.5101 23.9852 23.2593 23.9875 22.9971C23.9897 22.7349 23.8889 22.4823 23.7068 22.2937ZM9.99978 18.0007C8.41753 18.0007 6.87081 17.5315 5.55522 16.6525C4.23963 15.7734 3.21425 14.524 2.60875 13.0622C2.00324 11.6004 1.84482 9.99182 2.1535 8.43998C2.46218 6.88813 3.22411 5.46266 4.34293 4.34384C5.46175 3.22502 6.88721 2.4631 8.43906 2.15442C9.99091 1.84573 11.5994 2.00416 13.0613 2.60966C14.5231 3.21516 15.7725 4.24054 16.6515 5.55614C17.5306 6.87173 17.9998 8.41845 17.9998 10.0007C17.9974 12.1217 17.1538 14.1551 15.654 15.6549C14.1542 17.1547 12.1208 17.9983 9.99978 18.0007Z"
-                            />
-                        </g>
+            <form className={`flex flex-row py-1 w-2/5`} onSubmit={handleOnSubmit}>
+                    <input
+                        name={`query`}
+                        className={`placeholder:px-4 p-2 h-full w-full border border-1 rounded-bl-md rounded-tl-md border-gray-300 active:border-gray-300 active:outline-1 active:outline-gray-400`}
+                        placeholder={`Search`}/>
+                    <button type={`submit`} className={`bg-[#D8762D] h-full w-8 p-2 rounded-tr-md rounded-br-md `}>
+                        <svg className={`fill-white h-full`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                             fill="none">
+                            <g clipPath="url(#clip0_10_450)">
+                                <path
+                                    d="M23.7068 22.2937L17.7378 16.3247C19.3644 14.3353 20.1642 11.7968 19.9716 9.23426C19.7791 6.67173 18.609 4.28123 16.7034 2.55722C14.7977 0.833208 12.3024 -0.0924103 9.73342 -0.0281784C7.16447 0.0360534 4.71849 1.08522 2.9014 2.90231C1.08431 4.7194 0.0351379 7.16539 -0.029094 9.73434C-0.0933258 12.3033 0.832293 14.7987 2.5563 16.7043C4.28031 18.6099 6.67081 19.78 9.23334 19.9725C11.7959 20.1651 14.3344 19.3653 16.3238 17.7387L22.2928 23.7077C22.4814 23.8899 22.734 23.9907 22.9962 23.9884C23.2584 23.9861 23.5092 23.8809 23.6946 23.6955C23.88 23.5101 23.9852 23.2593 23.9875 22.9971C23.9897 22.7349 23.8889 22.4823 23.7068 22.2937ZM9.99978 18.0007C8.41753 18.0007 6.87081 17.5315 5.55522 16.6525C4.23963 15.7734 3.21425 14.524 2.60875 13.0622C2.00324 11.6004 1.84482 9.99182 2.1535 8.43998C2.46218 6.88813 3.22411 5.46266 4.34293 4.34384C5.46175 3.22502 6.88721 2.4631 8.43906 2.15442C9.99091 1.84573 11.5994 2.00416 13.0613 2.60966C14.5231 3.21516 15.7725 4.24054 16.6515 5.55614C17.5306 6.87173 17.9998 8.41845 17.9998 10.0007C17.9974 12.1217 17.1538 14.1551 15.654 15.6549C14.1542 17.1547 12.1208 17.9983 9.99978 18.0007Z"
+                                />
+                            </g>
 
-                    </svg>
-                </button>
-            </div>
+                        </svg>
+                    </button>
+            </form>
             <div className={`w-1/5 flex items-center justify-end`}>
-                <button className={`bg-black text-white flex flex-row items-center p-1 rounded-md`}>
-                    <svg className={`h-6 w-6 fill-white m-1`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" fill="none">
+                <Link href={'/account'} className={`bg-black text-white flex flex-row items-center py-1 px-2 rounded-md`}>
+                    <svg className={`h-6 w-6 fill-white m-1`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25"
+                         fill="none">
                         <g clipPath="url(#clip0_10_443)">
                             <path
                                 d="M12 12.4999C13.1867 12.4999 14.3467 12.1334 15.3334 11.4466C16.3201 10.7599 17.0892 9.78375 17.5433 8.64171C17.9974 7.49967 18.1162 6.24301 17.8847 5.03063C17.6532 3.81825 17.0818 2.7046 16.2426 1.83052C15.4035 0.956446 14.3344 0.361191 13.1705 0.120034C12.0067 -0.121124 10.8003 0.002647 9.7039 0.475695C8.60754 0.948742 7.67047 1.74982 7.01118 2.77763C6.35189 3.80543 6 5.01381 6 6.24994C6.00159 7.90704 6.63424 9.49579 7.75911 10.6675C8.88399 11.8393 10.4092 12.4983 12 12.4999ZM12 2.08327C12.7911 2.08327 13.5645 2.32765 14.2223 2.78549C14.8801 3.24332 15.3928 3.89407 15.6955 4.65543C15.9983 5.41679 16.0775 6.25456 15.9231 7.06282C15.7688 7.87107 15.3878 8.6135 14.8284 9.19622C14.269 9.77894 13.5563 10.1758 12.7804 10.3365C12.0044 10.4973 11.2002 10.4148 10.4693 10.0994C9.73836 9.78407 9.11365 9.25002 8.67412 8.56482C8.2346 7.87961 8 7.07403 8 6.24994C8 5.14487 8.42143 4.08506 9.17157 3.30366C9.92172 2.52226 10.9391 2.08327 12 2.08327Z"/>
@@ -52,7 +70,7 @@ const Navbar = () => {
                     <span className={`font-mono`}>
                     My Account
                 </span>
-                </button>
+                </Link>
             </div>
         </div>
     </>

@@ -38,10 +38,12 @@ const CategoryCard = ({ image, title, itemCount, id}) => {
                     className={`brightness-75 transition-transform duration-[600ms] ease-in-out transform group-hover:scale-125 h-auto `}
                     src={image} alt=""/>
             </div>
+            <Link href={`products?category=${title}`}>
             <div className={`flex flex-col font-inter text-black group-hover:text-white justify-center items-center absolute bottom-[8%] left-[50%] -translate-x-[50%] translate-y-[8%] w-[70%] h-12 bg-white group-hover:bg-[#D8762D] rounded-lg`}>
                 <span className={`font-extrabold `}>{title}</span>
                 <span className={`font-light text-sm `}>{itemCount} Item</span>
             </div>
+            </Link>
             <div
                 className={`absolute top-0 left-[50%] transform -translate-x-[50%] -translate-y-[50%] h-max w-min bg-[#e7efe2] aspect-square p-3 rounded-full fill-amber-500`}>
                 {icon}
